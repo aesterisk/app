@@ -1,36 +1,40 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+### Asterisk Frontend
 
-# dependencies
+## Next.js
+
+# Dependencies
 /node_modules
 /.pnp
 .pnp.js
-.yarn/install-state.gz
 
-# testing
+# Testing
 /coverage
 
-# next.js
+# Next.js Specific
 /.next/
 /out/
 
-# production
+# Production
 /build
 
-# misc
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+## Misc
+
+# macOS
 .DS_Store
+
+# Don't check in secrets, mate!
 *.pem
 
-# debug
+# Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
+## Development
+
+# Local environment files
 .env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts

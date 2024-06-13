@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ../
+      dockerfile: docker/prod.Dockerfile
+    image: aesterisk-web:prod
+    ports:
+      - "3001:3000"

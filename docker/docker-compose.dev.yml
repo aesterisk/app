@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ../
+      dockerfile: docker/dev.Dockerfile
+    image: aesterisk-web:dev
+    ports:
+      - "3000:3000"
