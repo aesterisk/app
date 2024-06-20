@@ -38,3 +38,6 @@ yarn-error.log*
 
 # Local environment files
 .env*.local
+
+# JetBrains IDEs
+.idea/
