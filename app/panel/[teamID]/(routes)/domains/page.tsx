@@ -1,37 +1,7 @@
 export default function DomainsPage() {
 	return (
 		<main className="p-4">
-			{
-				"Ea occaecat nostrud aliqua pariatur id proident labore tempor elit duis consectetur aute. Duis cillum duis dolor ex nisi duis laborum pariatur minim velit voluptate. Sunt aliqua elit magna nulla proident consectetur aute ea tempor enim nisi. Ipsum tempor veniam commodo eiusmod. Id et amet veniam officia eiusmod eu ad dolor sit ullamco id irure. Ea velit fugiat reprehenderit sit ipsum dolore est deserunt.\n"
-				+ "\n"
-				+ "Ut culpa quis sunt ipsum officia quis id. Reprehenderit proident eiusmod non ad duis officia aliquip aliquip consectetur officia. Nisi nulla id fugiat sunt deserunt ad fugiat sit adipisicing. Duis anim veniam aute cupidatat consequat fugiat est. Consequat aliquip laboris incididunt id in labore adipisicing enim aute sint. Veniam velit consequat magna. Laboris cillum Lorem et occaecat laborum nulla.\n"
-				+ "\n"
-				+ "Aliqua nulla incididunt consectetur magna dolore nostrud esse amet aute pariatur esse Lorem non. Culpa ad nisi nulla nostrud eu ullamco deserunt fugiat non enim eiusmod cupidatat enim. Deserunt velit exercitation eiusmod enim duis nostrud esse. Occaecat voluptate deserunt quis magna aute et qui esse culpa Lorem commodo consequat. Officia exercitation ut laboris aliquip id.\n"
-				+ "\n"
-				+ "Ea nulla reprehenderit laboris aliquip excepteur fugiat aute nostrud qui. Ea anim sit laborum minim deserunt. Consectetur eu cillum tempor pariatur duis. Fugiat amet ullamco consequat dolor aliqua dolor ipsum veniam deserunt enim ex quis eu veniam. Tempor irure exercitation esse Lorem laborum eu ipsum aute. Sint et minim deserunt consectetur proident consequat non amet consectetur culpa deserunt esse sit quis. Consequat commodo irure dolor pariatur ea Lorem occaecat velit amet voluptate do enim. Nisi enim consequat consequat qui qui enim est tempor voluptate eu incididunt.\n"
-				+ "\n"
-				+ "Ad dolor cupidatat cillum ad magna in dolor ea velit. Dolore officia voluptate aliqua est et nisi deserunt laborum. Ea in duis proident proident velit pariatur ipsum reprehenderit in deserunt ex ea magna ut. In dolore non duis dolor velit velit sint aute. Reprehenderit ullamco ea est aliqua dolore. In ea fugiat occaecat nisi laboris irure voluptate nostrud labore ullamco reprehenderit. Et consequat ex non eu consequat deserunt labore tempor magna velit cillum esse.\n"
-				+ "\n"
-				+ "Sit Lorem do dolore cillum esse sit excepteur Lorem est est quis. Irure elit minim excepteur minim cupidatat excepteur proident duis labore velit id do ea magna. Amet pariatur ut nulla non dolor esse minim ex cillum labore. Culpa esse in sint veniam excepteur excepteur ad reprehenderit sint culpa mollit id pariatur consequat. Aute eiusmod elit cupidatat ad cupidatat qui anim duis. Sunt enim ullamco ipsum eiusmod ut.\n"
-				+ "\n"
-				+ "Aliquip exercitation cillum nostrud nulla incididunt laboris amet magna. Culpa laborum in fugiat velit do do magna sunt exercitation deserunt eiusmod excepteur dolore laborum. Ad nisi ex ipsum esse proident officia labore aute tempor culpa. Ea quis sit fugiat minim irure laborum dolore aliqua ipsum ipsum commodo reprehenderit sit. Incididunt incididunt ut amet magna nulla pariatur Lorem culpa esse. Commodo voluptate fugiat deserunt. Mollit ad mollit voluptate duis irure nostrud do tempor reprehenderit aute dolor labore eu.\n"
-				+ "\n"
-				+ "Dolor proident elit magna incididunt veniam culpa pariatur cupidatat laborum excepteur tempor eiusmod ex velit. Et cupidatat ea excepteur duis incididunt. Exercitation Lorem pariatur quis sunt do magna tempor reprehenderit consequat cillum adipisicing do irure ad. Labore tempor irure esse ex nulla nisi fugiat laboris consequat exercitation labore Lorem. Consequat adipisicing culpa et sunt Lorem do. Consequat reprehenderit quis ad officia id duis veniam et aliqua. Anim officia aute ex deserunt consequat. Reprehenderit nulla anim cupidatat ex tempor quis sint eu laboris laborum aliquip quis cupidatat mollit deserunt.\n"
-				+ "\n"
-				+ "Elit irure sint velit ipsum cupidatat ea ullamco. Dolore aute adipisicing officia enim quis reprehenderit nostrud aute irure ipsum. Do eu enim ipsum amet amet sit officia consequat veniam reprehenderit et occaecat voluptate pariatur. Culpa ullamco ut deserunt dolor tempor eiusmod. Mollit in voluptate mollit sint nostrud incididunt irure. Et deserunt veniam consectetur. Consequat dolor ex sit labore ex excepteur labore magna sunt anim aliqua cillum.\n"
-				+ "\n"
-				+ "Labore cillum elit officia velit elit sunt amet eu tempor anim elit excepteur. Enim pariatur proident voluptate sunt amet incididunt consectetur commodo adipisicing incididunt veniam irure. Nulla nulla amet in incididunt excepteur laboris laborum in mollit cupidatat minim qui eiusmod minim. Officia exercitation pariatur tempor ex amet exercitation id qui reprehenderit cillum voluptate proident irure laboris ipsum. Nisi irure esse Lorem aliquip laborum dolore pariatur commodo nostrud. Sit esse reprehenderit irure cillum consequat fugiat irure nulla velit reprehenderit nisi eiusmod ut. Eiusmod sit excepteur duis labore fugiat nisi consectetur nisi proident irure qui amet consequat.\n"
-				+ "\n"
-				+ "Velit eu adipisicing deserunt veniam dolor ullamco Lorem velit enim deserunt. Duis aliquip in ut aute sint sint voluptate cupidatat cillum sunt quis. Est commodo est commodo ex nisi quis aliqua ea adipisicing cillum. Non deserunt deserunt deserunt id id do ut excepteur eu tempor consequat enim enim. Ipsum et amet cillum et officia et aliqua. Quis veniam amet duis duis qui laboris laborum incididunt. Fugiat quis culpa nulla pariatur exercitation reprehenderit veniam ut adipisicing.\n"
-				+ "\n"
-				+ "Ut irure nulla adipisicing cupidatat cillum minim eu veniam sint minim. Ea minim consectetur tempor aliqua. In amet elit ex quis sit exercitation consectetur laborum deserunt. Adipisicing dolor enim fugiat exercitation proident do laboris qui esse Lorem incididunt consequat. Ipsum et tempor irure aliqua dolor exercitation culpa quis. Consequat sit exercitation proident irure dolore consectetur et enim et deserunt sunt cupidatat incididunt. Voluptate consectetur in officia Lorem dolor laboris non. Officia quis mollit nisi aliqua incididunt duis adipisicing adipisicing reprehenderit exercitation ullamco.\n"
-				+ "\n"
-				+ "Minim ex ullamco nulla culpa ipsum labore consequat. Nulla quis adipisicing commodo non laborum incididunt aliqua. Nostrud magna minim sunt esse occaecat laboris. Ut aute eu incididunt et occaecat voluptate cillum incididunt deserunt veniam. Irure adipisicing ipsum quis in eiusmod quis officia. Mollit proident est est velit culpa dolor dolor id adipisicing.\n"
-				+ "\n"
-				+ "Quis est eu do reprehenderit qui nulla non labore veniam magna. Proident officia sit aliqua incididunt magna aliqua. Nostrud aliquip id cillum quis proident. Cillum laborum laboris sit ullamco cillum eiusmod eu incididunt do tempor labore fugiat. Excepteur non aute fugiat enim sint voluptate dolore labore do elit amet aliquip anim. Occaecat exercitation sunt esse cupidatat non sit.\n"
-				+ "\n"
-				+ "Ex dolor laboris dolore qui incididunt commodo non cupidatat proident sunt in. Occaecat non id ipsum mollit in fugiat incididunt et nostrud esse exercitation tempor ut aliquip. Labore nisi sunt mollit nostrud aliquip fugiat minim. Est excepteur occaecat eu voluptate."
-			}
+			<></>
 		</main>
 	);
 }
