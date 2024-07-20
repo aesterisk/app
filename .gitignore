@@ -1,4 +1,4 @@
-### Asterisk Frontend
+### Asterisk
 
 ## Next.js
 
@@ -39,5 +39,11 @@ yarn-error.log*
 # Local environment files
 .env*.local
 
-# JetBrains IDEs
-.idea/
+# Editor/IDEs
+/.idea
+/.vscode
+
+## Docker
+
+# Docker Volume Data
+/data

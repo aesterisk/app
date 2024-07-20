@@ -11,15 +11,18 @@ import {
 } from "@/components/app/sidebar";
 import TeamSwitcher from "@/components/app/team-switcher";
 import { SidebarItem } from "@/components/app/sidebar-item";
+import Link from "next/link";
 
 export default function AesteriskSidebar() {
 	return (
 		<>
 			<SidebarTitle>
-				<Button variant="link" className="flex items-center gap-2 font-semibold text-lg p-1">
-					<Asterisk className="h-6 w-6" />
-					<span>{ "Aesterisk" }</span>
-				</Button>
+				<Link href="/">
+					<Button variant="link" className="flex items-center gap-2 font-semibold text-lg p-1">
+						<Asterisk className="h-6 w-6" />
+						<span>{ "Aesterisk" }</span>
+					</Button>
+				</Link>
 			</SidebarTitle>
 			<SidebarContent>
 				<div className="flex items-center justify-center h-14 px-2 lg:px-4 py-8 mb-2">

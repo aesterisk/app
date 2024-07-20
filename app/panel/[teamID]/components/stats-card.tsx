@@ -2,21 +2,32 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { LineChart } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { mapValue } from "@/lib/utils";
 
 export default function StatsCard({
 	title,
 	description,
+	minValue,
 	value,
+	maxValue,
 	prefix,
 	id,
+	warningStop,
+	dangerStop,
 }: {
 	title: string;
 	description: string;
+	minValue?: number;
 	value: number;
+	maxValue?: number;
 	prefix: string;
 	id: string;
+	warningStop: number;
+	dangerStop: number;
 }) {
 	const displayValue = value.toFixed(1);
+	const percentage = mapValue(value, minValue ?? 0, maxValue ?? 100, 0, 100);
+	const color = percentage >= dangerStop ? "bg-rose-300" : value >= warningStop ? "bg-yellow-300" : "bg-primary";
 
 	return (
 		<Card className="relative w-full h-full" id={id}>
@@ -35,7 +46,7 @@ export default function StatsCard({
 				<div className="text-xs text-muted-foreground">{ description }</div>
 			</CardContent>
 			<CardFooter>
-				<Progress value={value} aria-label={`${displayValue}${prefix}`} className="mt-2" />
+				<Progress value={percentage} aria-label={`${displayValue}${prefix}`} className={color} />
 			</CardFooter>
 		</Card>
 	);

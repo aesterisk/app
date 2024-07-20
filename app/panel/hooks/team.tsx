@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Team } from "@/lib/types";
-import { personalTeam, teams } from "@/app/example-data";
+import { teams } from "@/app/example-data";
 
 const useTeamState = () => useState<Team | null>(null);
 const TeamContext = createContext<ReturnType <typeof useTeamState> | null>(null);
@@ -29,12 +29,12 @@ export const TeamProvider = ({ children }: Readonly<{ children: React.ReactNode;
 	);
 };
 
-export const TeamUpdater = ({ children, teamID }: Readonly<{ children: React.ReactNode; teamID: string; }>) => {
+export const TeamUpdater = ({ children, teamPath }: Readonly<{ children: React.ReactNode; teamPath: string; }>) => {
 	const [, setTeam] = useTeamContext();
 
 	useEffect(() => {
-		setTeam(teams.find((team) => team.id === teamID) || personalTeam);
-	}, [setTeam, teamID]);
+		setTeam(teams.find((team) => team.path === teamPath) || teams[0]);
+	}, [setTeam, teamPath]);
 
 	return (
 		<>{ children }</>

@@ -11,7 +11,7 @@ export default function Layout({
 	params: { teamID: string; };
 }>) {
 	return (
-		<TeamUpdater teamID={params.teamID}>
+		<TeamUpdater teamPath={params.teamID}>
 			{ children }
 		</TeamUpdater>
 	);

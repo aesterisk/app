@@ -1,10 +1,9 @@
 import { Sidebar } from "@/components/app/sidebar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Menu, Search } from "lucide-react";
+import { ArrowUpRight, LifeBuoy, LogOut, Menu, Search, User } from "lucide-react";
 import React from "react";
 import AesteriskSidebar from "@/app/panel/components/sidebar";
-import { user } from "@/app/example-data";
 import { Input } from "@/components/ui/input";
 import {
 	DropdownMenu,
@@ -18,8 +17,23 @@ import Link from "next/link";
 import { TeamProvider } from "@/app/panel/hooks/team";
 import { Breadcrumb, BreadcrumbList } from "@/components/ui/breadcrumb";
 import AesteriskBreadcrumb from "@/app/panel/components/breadcrumb";
+import { auth, signOut } from "@/lib/auth";
+import { AuthError } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function Layout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default async function Layout({ children }: Readonly<{ children: React.ReactNode; }>) {
+	const session = await auth();
+
+	if(!session) {
+		redirect("/auth/login");
+	}
+
+	const { user } = session;
+
+	if(!user) {
+		redirect("/auth/login");
+	}
+
 	return (
 		<TeamProvider>
 			<div className="h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] overflow-auto">
@@ -65,17 +79,45 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
 									<DropdownMenuTrigger asChild>
 										<Button variant="secondary" size="icon" className="rounded-full">
 											<Avatar>
-												<AvatarFallback>{ getPrimaryChars(user.name) }</AvatarFallback>
+												<AvatarFallback>{ getPrimaryChars(user.name ?? "No Name") }</AvatarFallback>
 											</Avatar>
 										</Button>
 									</DropdownMenuTrigger>
 									<DropdownMenuContent align="end">
-										<DropdownMenuLabel>{ user.name }</DropdownMenuLabel>
+										<DropdownMenuLabel>{ user.name ?? "No Name" }</DropdownMenuLabel>
 										<DropdownMenuSeparator />
-										<DropdownMenuItem>{ "Manage Account" }</DropdownMenuItem>
-										<DropdownMenuItem>{ "Support" }</DropdownMenuItem>
+										<DropdownMenuItem>
+											<User size={16} className="mr-1.5" />
+											{ "Manage Account" }
+										</DropdownMenuItem>
+										<DropdownMenuItem>
+											<LifeBuoy size={16} className="mr-1.5" />
+											{ "Support" }
+										</DropdownMenuItem>
 										<DropdownMenuSeparator />
-										<DropdownMenuItem className="!text-destructive">{ "Logout" }</DropdownMenuItem>
+										<form
+											action={
+												async() => {
+													"use server";
+													try {
+														await signOut({ redirectTo: "/" });
+													} catch(error) {
+														if(error instanceof AuthError) {
+															redirect(`/auth/error?error=${error.type}`);
+														}
+
+														throw error;
+													}
+												}
+											}
+										>
+											<button type="submit" className="w-full">
+												<DropdownMenuItem className="!text-destructive">
+													<LogOut size={16} className="mr-1.5" />
+													{ "Logout" }
+												</DropdownMenuItem>
+											</button>
+										</form>
 									</DropdownMenuContent>
 								</DropdownMenu>
 							</div>

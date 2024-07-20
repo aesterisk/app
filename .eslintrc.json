@@ -5,6 +5,7 @@
 	],
 	"rules": {
 		"@stylistic/no-extra-parens": "off",
-		"id-length": "off"
+		"id-length": "off",
+		"no-nested-ternary": "off"
 	}
 }

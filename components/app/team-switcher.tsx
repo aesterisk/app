@@ -12,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { cn, getPrimaryChars } from "@/lib/utils";
+import { cn, getPlan, getPrimaryChars } from "@/lib/utils";
 import {
 	Command,
 	CommandEmpty,
@@ -26,7 +26,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Check, ChevronsUpDown, Plus } from "lucide-react";
-import { personalTeam, teams } from "@/app/example-data";
+import { teams } from "@/app/example-data";
 import { useRouter } from "next/navigation";
 import { useTeam } from "@/app/panel/hooks/team";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -44,6 +44,8 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 	const [showNewTeamDialog, setShowNewTeamDialog] = useState(false);
 	const [searchQuery, setSearchQuery] = useState("");
 	const [newTeamName, setNewTeamName] = useState("");
+
+	const [personalTeam, ...otherTeams] = teams;
 
 	const btn = useRef<HTMLButtonElement>(null);
 
@@ -66,7 +68,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 								)
 								: (
 									<Avatar className="h-5 w-5 mr-[11px]">
-										<AvatarFallback className={cn("text-[10px] font-semibold", selectedTeam.plan.color)}>{ getPrimaryChars(selectedTeam.name) }</AvatarFallback>
+										<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(selectedTeam).color)}>{ getPrimaryChars(selectedTeam.name) }</AvatarFallback>
 									</Avatar>
 								)
 						}
@@ -95,17 +97,17 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 							</CommandEmpty>
 							<CommandGroup heading="Personal">
 								<CommandItem
-									value={personalTeam.id}
+									value={personalTeam.path}
 									onSelect={
 										() => {
-											router.push(`/panel/${personalTeam.id}`);
+											router.push(`/panel/${personalTeam.path}`);
 											setOpen(false);
 										}
 									}
 									className="text-sm"
 								>
 									<Avatar className="mr-2 h-5 w-5">
-										<AvatarFallback className={cn("text-[10px] font-semibold", personalTeam.plan.color)}>{ getPrimaryChars(personalTeam.name) }</AvatarFallback>
+										<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(personalTeam).color)}>{ getPrimaryChars(personalTeam.name) }</AvatarFallback>
 									</Avatar>
 									{ personalTeam.name }
 									<Check
@@ -115,20 +117,20 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 							</CommandGroup>
 							<CommandGroup heading="Teams">
 								{
-									teams.map((team) => (
+									otherTeams.map((team) => (
 										<CommandItem
 											key={team.id}
-											value={team.id}
+											value={team.path}
 											onSelect={
 												() => {
-													router.push(`/panel/${team.id}`);
+													router.push(`/panel/${team.path}`);
 													setOpen(false);
 												}
 											}
 											className="text-sm"
 										>
 											<Avatar className="mr-2 h-5 w-5">
-												<AvatarFallback className={cn("text-[10px] font-semibold", team.plan.color)}>{ getPrimaryChars(team.name) }</AvatarFallback>
+												<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(team).color)}>{ getPrimaryChars(team.name) }</AvatarFallback>
 											</Avatar>
 											{ team.name }
 											<Check
