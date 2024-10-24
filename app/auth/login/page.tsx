@@ -1,5 +1,4 @@
 import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import React from "react";
 import LoginButton from "@/app/auth/login/components/login-button";
 
@@ -14,14 +13,14 @@ export default function LoginPage() {
 			</CardHeader>
 			<CardContent>
 				<div className="grid gap-4">
-					<div className="grid gap-2">
-						<LoginButton provider="github">{ "Login with Github" }</LoginButton>
-					</div>
-					<Separator />
-					<div className="grid gap-2">
-						<LoginButton provider="not-implemented" outline>{ "Continue with SAML SSO" }</LoginButton>
-						<LoginButton provider="not-implemented" outline>{ "Continue with a Passkey" }</LoginButton>
-					</div>
+					{ /* <div className="grid gap-2">*/ }
+					<LoginButton provider="github">{ "Login with Github" }</LoginButton>
+					{ /* </div>*/ }
+					{ /* <Separator />*/ }
+					{ /* <div className="grid gap-2">*/ }
+					{ /* <LoginButton provider="not-implemented" outline>{ "Continue with SAML SSO" }</LoginButton> */ }
+					{ /* <LoginButton provider="not-implemented" outline>{ "Continue with a Passkey" }</LoginButton> */ }
+					{ /* </div>*/ }
 				</div>
 			</CardContent>
 		</>

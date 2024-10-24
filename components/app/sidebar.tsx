@@ -1,9 +1,11 @@
+// todo: refactor these into the appropriate /app/**/components/ folder
+
 import { forwardRef, HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 export function Sidebar({ children }: Readonly<{ children: ReactNode; }>) {
 	return (
-		<div className="hidden border-r bg-muted/40 md:block h-screen fixed top-0 left-0 w-[280px]">
+		<div className="hidden border-r bg-muted-40 md:block h-screen fixed top-0 left-0 w-[280px]">
 			<div className="flex h-screen max-h-screen flex-col gap-2">
 				{ children }
 			</div>
@@ -16,7 +18,7 @@ const SidebarTitle = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 	...props
 }, ref) => (
 	<div
-		className={cn("flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6", className)}
+		className={cn("flex h-14 min-h-14 lg:min-h-[60px] items-center border-b px-4 lg:h-[60px] lg:px-6", className)}
 		ref={ref}
 		{...props}
 	/>

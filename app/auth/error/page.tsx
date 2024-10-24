@@ -8,16 +8,15 @@ export default function AuthErrorPage() {
 			<CardHeader>
 				<CardTitle className="text-2xl">{ "Error" }</CardTitle>
 				<CardDescription>
-					<p>{ "An error occurred while attempting to authenticate." }</p>
-					<p>
-						{ "Please " }
-						<Link href="/contact">
-							<Button variant="link" className="p-0 h-min">
-								{ "contact us" }
-							</Button>
-						</Link>
-						{ " if the issue persists." }
-					</p>
+					{ "An error occurred while attempting to authenticate." }
+					<br />
+					{ "Please " }
+					<Link href="/contact">
+						<Button variant="link" className="p-0 h-min">
+							{ "contact us" }
+						</Button>
+					</Link>
+					{ " if the issue persists." }
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="grid gap-4">

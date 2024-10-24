@@ -1,3 +1,5 @@
+// todo: refactor these into the appropriate /app/**/components/ folder
+
 "use client";
 
 import {
@@ -26,26 +28,24 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Check, ChevronsUpDown, Plus } from "lucide-react";
-import { teams } from "@/app/example-data";
-import { useRouter } from "next/navigation";
-import { useTeam } from "@/app/panel/hooks/team";
 import { Skeleton } from "@/components/ui/skeleton";
+import { UserTeam } from "@/lib/types/team";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>;
 
-interface TeamSwitcherProps extends PopoverTriggerProps {}
+interface TeamSwitcherProps extends PopoverTriggerProps {
+	selectedTeam: UserTeam | null;
+	personalTeam: UserTeam;
+	otherTeams: UserTeam[];
+	refresh: (path: string)=> Promise<void>;
+}
 
-export default function TeamSwitcher({ className }: TeamSwitcherProps) {
-	const router = useRouter();
-
+export default function TeamSwitcher({ selectedTeam, personalTeam, otherTeams, className, refresh }: TeamSwitcherProps) {
 	const [open, setOpen] = useState(false);
-	const selectedTeam = useTeam();
 	const isLoading = selectedTeam === null;
 	const [showNewTeamDialog, setShowNewTeamDialog] = useState(false);
 	const [searchQuery, setSearchQuery] = useState("");
 	const [newTeamName, setNewTeamName] = useState("");
-
-	const [personalTeam, ...otherTeams] = teams;
 
 	const btn = useRef<HTMLButtonElement>(null);
 
@@ -58,7 +58,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 						role="combobox"
 						aria-expanded={open}
 						aria-label="Select a team"
-						className={cn("w-[200px] justify-between px-[13px]", className)}
+						className={cn("w-full justify-between px-[13px]", className)}
 						ref={btn}
 					>
 						{
@@ -68,11 +68,11 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 								)
 								: (
 									<Avatar className="h-5 w-5 mr-[11px]">
-										<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(selectedTeam).color)}>{ getPrimaryChars(selectedTeam.name) }</AvatarFallback>
+										<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(selectedTeam.team).color)}>{ getPrimaryChars(selectedTeam.team.name) }</AvatarFallback>
 									</Avatar>
 								)
 						}
-						{ isLoading ? <Skeleton className="h-2 w-28" /> : selectedTeam.name }
+						{ isLoading ? <Skeleton className="h-2 w-28" /> : selectedTeam.team.name }
 						<ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
 					</Button>
 				</PopoverTrigger>
@@ -97,21 +97,21 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 							</CommandEmpty>
 							<CommandGroup heading="Personal">
 								<CommandItem
-									value={personalTeam.path}
+									value={personalTeam.team.path}
 									onSelect={
-										() => {
-											router.push(`/panel/${personalTeam.path}`);
+										async() => {
 											setOpen(false);
+											await refresh(personalTeam.team.path);
 										}
 									}
 									className="text-sm"
 								>
 									<Avatar className="mr-2 h-5 w-5">
-										<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(personalTeam).color)}>{ getPrimaryChars(personalTeam.name) }</AvatarFallback>
+										<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(personalTeam.team).color)}>{ getPrimaryChars(personalTeam.team.name) }</AvatarFallback>
 									</Avatar>
-									{ personalTeam.name }
+									{ personalTeam.team.name }
 									<Check
-										className={cn("ml-auto h-4 w-4", !isLoading && (selectedTeam.id === personalTeam.id) ? "opacity-100" : "opacity-0")}
+										className={cn("ml-auto h-4 w-4", !isLoading && (selectedTeam.team.id === personalTeam.team.id) ? "opacity-100" : "opacity-0")}
 									/>
 								</CommandItem>
 							</CommandGroup>
@@ -119,22 +119,22 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 								{
 									otherTeams.map((team) => (
 										<CommandItem
-											key={team.id}
-											value={team.path}
+											key={team.team.id}
+											value={team.team.path}
 											onSelect={
-												() => {
-													router.push(`/panel/${team.path}`);
+												async() => {
 													setOpen(false);
+													await refresh(team.team.path);
 												}
 											}
 											className="text-sm"
 										>
 											<Avatar className="mr-2 h-5 w-5">
-												<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(team).color)}>{ getPrimaryChars(team.name) }</AvatarFallback>
+												<AvatarFallback className={cn("text-[10px] font-semibold", getPlan(team.team).color)}>{ getPrimaryChars(team.team.name) }</AvatarFallback>
 											</Avatar>
-											{ team.name }
+											{ team.team.name }
 											<Check
-												className={cn("ml-auto h-4 w-4", !isLoading && (selectedTeam.id === team.id) ? "opacity-100" : "opacity-0")}
+												className={cn("ml-auto h-4 w-4", !isLoading && (selectedTeam.team.id === team.team.id) ? "opacity-100" : "opacity-0")}
 											/>
 										</CommandItem>
 									))
@@ -209,7 +209,9 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
 					<Button variant="outline" onClick={() => setShowNewTeamDialog(false)}>
 						{ "Cancel" }
 					</Button>
-					<Button type="submit">{ "Continue" }</Button>
+					<Button type="submit" onClick={() => setShowNewTeamDialog(false)}>
+						{ "Create" }
+					</Button>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>

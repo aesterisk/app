@@ -16,6 +16,7 @@
 
 # Production
 /build
+/.vercel
 
 # TypeScript
 *.tsbuildinfo
@@ -42,8 +43,3 @@ yarn-error.log*
 # Editor/IDEs
 /.idea
 /.vscode
-
-## Docker
-
-# Docker Volume Data
-/data

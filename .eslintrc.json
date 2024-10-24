@@ -1,11 +1,14 @@
 {
 	"extends": [
 		"next/core-web-vitals",
+		"next/typescript",
 		"@yolocat"
 	],
 	"rules": {
 		"@stylistic/no-extra-parens": "off",
 		"id-length": "off",
-		"no-nested-ternary": "off"
+		"no-nested-ternary": "off",
+		"@typescript-eslint/no-shadow": "error",
+		"no-shadow": "off"
 	}
 }

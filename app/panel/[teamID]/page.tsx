@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
 import StatsCard from "@/app/panel/[teamID]/components/stats-card";
 import DashboardGrid from "@/app/panel/[teamID]/components/dashboard-grid";
+import TeamTest from "@/components/app/team-test";
 
-export default function Home() {
+export default async function Home() {
 	const widgets: { id: string; card: ReactNode; }[] = [
 		{
 			id: "ram",
@@ -21,6 +22,7 @@ export default function Home() {
 	return (
 		<main className="px-4 py-5 w-full relative">
 			<DashboardGrid items={widgets} />
+			<TeamTest />
 		</main>
 	);
 }

@@ -49,27 +49,6 @@ export const plans: Plan[] = [
 	},
 ];
 
-export type Team = {
-	id: number;
-	path: string;
-	name: string;
-	plan: "free" | "plus" | "pro" | "enterprise"; // free = 0, plus = 1, pro = 2, enterprise = 3
-	isPersonal: boolean;
-	createdAt: number;
-	roles: number[];
-	nodes: number[];
-};
-
-export type Account = {
-	id: number;
-	email: string;
-	firstName: string;
-	lastName?: string;
-	createdAt: number;
-	lastActive: number;
-	personalTeam: number;
-};
-
 export type User = {
 	account: number;
 	team: number;

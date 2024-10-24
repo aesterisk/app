@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Asterisk, Bolt, Boxes, FolderInput, Globe, Home, Server, Users, Waypoints, Workflow } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import React from "react";
+import React, { Suspense } from "react";
 import {
 	SidebarContent,
 	SidebarFooter,
@@ -9,9 +9,10 @@ import {
 	SidebarSpacer,
 	SidebarTitle,
 } from "@/components/app/sidebar";
-import TeamSwitcher from "@/components/app/team-switcher";
 import { SidebarItem } from "@/components/app/sidebar-item";
 import Link from "next/link";
+import TeamSwitcherLoading from "@/components/app/team-switcher-loading";
+import TeamSwitcherLoader from "@/components/app/team-switcher-loader";
 
 export default function AesteriskSidebar() {
 	return (
@@ -26,7 +27,9 @@ export default function AesteriskSidebar() {
 			</SidebarTitle>
 			<SidebarContent>
 				<div className="flex items-center justify-center h-14 px-2 lg:px-4 py-8 mb-2">
-					<TeamSwitcher className="w-full" />
+					<Suspense fallback={<TeamSwitcherLoading />}>
+						<TeamSwitcherLoader />
+					</Suspense>
 				</div>
 				<SidebarList>
 					<SidebarItem icon={<Home size={16} />} label="Dashboard" href="" />

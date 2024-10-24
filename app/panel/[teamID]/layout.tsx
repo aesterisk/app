@@ -1,7 +1,6 @@
-"use client";
-
 import React from "react";
-import { TeamUpdater } from "@/app/panel/hooks/team";
+import { setPath } from "@/app/panel/caches/team";
+import { SocketProvider } from "@/app/panel/[teamID]/hooks/socket";
 
 export default function Layout({
 	children,
@@ -10,9 +9,11 @@ export default function Layout({
 	children: React.ReactNode;
 	params: { teamID: string; };
 }>) {
+	setPath(params.teamID);
+
 	return (
-		<TeamUpdater teamPath={params.teamID}>
+		<SocketProvider>
 			{ children }
-		</TeamUpdater>
+		</SocketProvider>
 	);
 }
